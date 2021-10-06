@@ -1,0 +1,65 @@
+.panel {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	gap: 13px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 9px 0;
+	width: 100vw;
+	background: rgba(255, 255, 255, 0.8);
+	backdrop-filter: blur(800px);
+	z-index: 9999;
+}
+
+.icon-wrapper {
+	--iw-size: 57px;
+	width: var(--iw-size);
+	height: var(--iw-size);
+	display: grid;
+	place-items: center;
+	border-radius: 5px;
+	transition: background 0.3s ease-in-out;
+}
+
+.icon-wrapper img {
+	--iw-size: 40px;
+	width: var(--iw-size);
+	height: var(--iw-size);
+}
+
+.icon-wrapper:hover {
+	background: rgba(255, 255, 255, 0.9);
+	backdrop-filter: blur(500px);
+}
+
+.icon-wrapper.opened {
+	background: rgba(255, 255, 255, 0.9);
+	backdrop-filter: blur(500px);
+}
+
+.icon-wrapper.opened.hidden {
+	background: transparent;
+	backdrop-filter: blur(0);
+}
+
+.icon-wrapper.opened .status {
+	width: 20px;
+	height: 5px;
+}
+
+.icon-wrapper.opened.hidden .status {
+	width: 5px;
+	height: 5px;
+}
+.status {
+	width: 0;
+	height: 0;
+	position: absolute;
+	background: #00bfff;
+	border-radius: 9px;
+	bottom: 0;
+	transition: width 0.3s ease-in-out;
+}

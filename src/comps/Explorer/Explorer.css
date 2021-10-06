@@ -1,0 +1,57 @@
+.explorer__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 8px;
+	background: #eff4fa;
+
+	border-top-right-radius: var(--border-radius);
+	border-top-left-radius: var(--border-radius);
+}
+#explorer-btn {
+	position: relative;
+}
+.explorer__title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 5px;
+	font-family: Segoe UI Variable Static Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: #000000;
+}
+.title__logo {
+	width: 17px;
+}
+
+.explorer__buttons {
+	display: grid;
+	grid-template: 1fr/ 50px 50px 50px;
+}
+
+.explorer {
+	--border-radius: 6px;
+	background: white;
+	width: 1330px;
+	height: 80%;
+	position: absolute;
+	bottom: 110px;
+	justify-self: center;
+	color: black;
+	border-radius: var(--border-radius);
+	transition: all 0.2s ease-in-out;
+	transform: translateY(30px);
+	opacity: 0;
+}
+
+.explorer.opened {
+	transform: translateY(0);
+	opacity: 1;
+}
+
+.explorer.hidden {
+	transform: translateY(60%) scale(0);
+	opacity: 0.5;
+}
