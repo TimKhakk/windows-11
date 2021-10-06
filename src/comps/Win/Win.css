@@ -41,9 +41,25 @@
 	bottom: 93px;
 	background: linear-gradient(134.22deg, #e8f2fb 6.63%, #dee8f4 69.15%);
 	box-shadow: 0 0 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
-	transition: all 0.3s;
 	transition-timing-function: cubic-bezier(0.3, 1, 0.3, 1);
 	will-change: transform, width, height;
+	transition: all 0.3s ease-in-out;
+	transform: translateY(30px);
+	opacity: 0;
+}
+
+.win.opened.focused {
+	z-index: 999;
+}
+
+.win.opened {
+	transform: translateY(0);
+	opacity: 1;
+}
+
+.win.hidden {
+	transform: translateY(60%) scale(0);
+	opacity: 0.5;
 }
 
 #win-btn svg::before {
@@ -136,9 +152,4 @@
 	font-size: 18px;
 	line-height: 1.33em;
 	color: #000000;
-}
-
-.icon-wrapper.focused {
-	background: rgba(255, 255, 255, 0.5);
-	backdrop-filter: blur(500px);
 }

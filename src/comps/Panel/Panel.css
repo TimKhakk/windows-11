@@ -45,11 +45,15 @@
 	backdrop-filter: blur(0);
 }
 
-.icon-wrapper.opened .status {
+.icon-wrapper.opened.focused .status {
 	width: 20px;
 	height: 5px;
 }
 
+.icon-wrapper.opened .status {
+	width: 5px;
+	height: 5px;
+}
 .icon-wrapper.opened.hidden .status {
 	width: 5px;
 	height: 5px;

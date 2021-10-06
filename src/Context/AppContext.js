@@ -1,26 +1,45 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const AppContext = createContext();
 
 export const useAppContext = () => useContext(AppContext);
 
 export const AppContextProvider = ({ children }) => {
-	const [isWinOpen, setIsWinOpen] = useState(false);
-
 	const [runningApps, setApps] = useState([]);
 
+	const closeWin = () => {
+		setApps(prev => prev.filter(item => item.id !== 'win'));
+	};
+
+	const hideAllApps = () => {
+		closeWin();
+		setApps(prev =>
+			prev.map(item => {
+				return { ...item, isFocused: false };
+			})
+		);
+	};
+
+	const unFocusAllApps = () => {
+		setApps(prev =>
+			prev.map(app => {
+				return { ...app, isFocused: false };
+			})
+		);
+	};
+
 	const openApp = id => {
-		console.log('openApp');
+		hideAllApps();
+
 		setApps(prev => [...prev, { id, isFocused: true, isHidden: false }]);
 	};
 
 	const closeApp = id => {
-		console.log('closeApp');
 		setApps(prev => prev.filter(item => item.id !== id));
 	};
 
 	const focusApp = id => {
-		console.log('focusApp');
+		closeWin();
 		setApps(prev =>
 			prev.map(item =>
 				item.id === id ? { ...item, isFocused: true } : { ...item, isFocused: false }
@@ -29,21 +48,27 @@ export const AppContextProvider = ({ children }) => {
 	};
 
 	const hideApp = id => {
-		console.log('hideApp');
+		unFocusAllApps();
 		setApps(prev => prev.map(item => (item.id === id ? { ...item, isHidden: true } : item)));
 	};
 
 	const showApp = id => {
-		console.log('showApp');
+		focusApp(id);
 		setApps(prev => prev.map(item => (item.id === id ? { ...item, isHidden: false } : item)));
 	};
 
 	const handleApp = id => {
+		unFocusAllApps();
+		closeWin();
 		if (!runningApps.find(item => item.id === id)) {
 			// Если закрыто
 			openApp(id);
 		} else {
-			if (runningApps.find(item => item.id === id && item.isHidden === true)) {
+			if (
+				runningApps.find(
+					item => (item.id === id && item.isHidden === true) || item.isFocused === false
+				)
+			) {
 				showApp(id);
 			} else {
 				//Если открыто
@@ -52,11 +77,7 @@ export const AppContextProvider = ({ children }) => {
 		}
 	};
 
-	const value = { runningApps, handleApp, closeApp, hideApp };
-
-	useEffect(() => {
-		console.dir(runningApps);
-	}, [runningApps]);
+	const value = { runningApps, handleApp, closeApp, hideApp, focusApp };
 
 	return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

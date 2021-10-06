@@ -3,13 +3,14 @@ import { useAppContext } from '../../Context/AppContext';
 import './Win.css';
 
 function Win() {
-	const { isWinOpen, focusedApp } = useAppContext();
+	const { runningApps, handleApp } = useAppContext();
+	const win = runningApps?.find(app => app.id === 'win');
 
 	return (
 		<>
 			<div
-				className={`win ${!isWinOpen ? 'hidden' : ''} ${
-					focusedApp === 'Win' ? 'focused' : ''
+				className={`win ${win ? 'opened' : ''} ${win?.isFocused ? 'focused' : ''} ${
+					win?.isHidden ? 'hidden' : ''
 				}`}
 			>
 				<div className='win__body'>
@@ -19,7 +20,7 @@ function Win() {
 					</div>
 
 					<div className='win__app-menu'>
-						<button className='app-link'>
+						<button onClick={() => handleApp('chrome')} className='app-link'>
 							<img alt='/' src='images/chrome.png' />
 							<span className='app-title'>Chrome</span>
 						</button>

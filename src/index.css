@@ -23,6 +23,13 @@ a {
 	color: inherit;
 }
 
+iframe {
+	width: 100%;
+	height: 90%;
+	overflow: overlay;
+	border: none;
+}
+
 #root {
 	display: grid;
 	position: relative;

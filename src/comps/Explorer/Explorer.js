@@ -2,13 +2,16 @@ import { useAppContext } from '../../Context/AppContext';
 import './Explorer.css';
 
 function Explorer() {
-	const { runningApps, closeApp, hideApp } = useAppContext();
+	const { runningApps, closeApp, hideApp, focusApp } = useAppContext();
 
 	const explorer = runningApps?.find(app => app.id === 'explorer');
 
 	return (
 		<div
-			className={`explorer ${explorer ? 'opened' : ''} ${explorer?.isHidden ? 'hidden' : ''}`}
+			onClick={() => focusApp(explorer.id)}
+			className={`explorer ${explorer ? 'opened' : ''} ${
+				explorer?.isFocused ? 'focused' : ''
+			} ${explorer?.isHidden ? 'hidden' : ''}`}
 		>
 			<div className='explorer__header'>
 				<div className='explorer__title'>

@@ -1,4 +1,4 @@
-.explorer__header {
+.app__header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -8,10 +8,10 @@
 	border-top-right-radius: var(--border-radius);
 	border-top-left-radius: var(--border-radius);
 }
-#explorer-btn {
+#app-btn {
 	position: relative;
 }
-.explorer__title {
+.app__title {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -26,12 +26,12 @@
 	width: 17px;
 }
 
-.explorer__buttons {
+.app__buttons {
 	display: grid;
 	grid-template: 1fr/ 50px 50px 50px;
 }
 
-.explorer {
+.app {
 	--border-radius: 6px;
 	background: white;
 	width: 1330px;
@@ -47,17 +47,17 @@
 	opacity: 0;
 }
 
-.explorer.opened.focused {
+.app.opened.focused {
 	z-index: 999;
 	opacity: 1;
 }
 
-.explorer.opened {
+.app.opened {
 	transform: translateY(0);
 	opacity: 0.5;
 }
 
-.explorer.hidden {
+.app.hidden {
 	transform: translateY(60%) scale(0);
 	opacity: 0.5;
 }
