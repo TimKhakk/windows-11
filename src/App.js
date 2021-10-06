@@ -16,7 +16,10 @@ function App() {
 				if (app.id !== 'win' && app.id !== 'explorer') {
 					return (
 						<AppLayout app={app}>
-							<iframe src='https://www.google.com/' title='chrome'></iframe>
+							<iframe
+								src='https://amazing-archimedes-971a5a.netlify.app/'
+								title='chrome'
+							></iframe>
 						</AppLayout>
 					);
 				}
