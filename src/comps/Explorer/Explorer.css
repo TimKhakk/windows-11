@@ -45,6 +45,7 @@
 	transform: translateY(30px);
 	box-shadow: 0 0 20px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
 	opacity: 0;
+	pointer-events: none;
 }
 
 .explorer.opened.focused {
@@ -55,6 +56,8 @@
 .explorer.opened {
 	transform: translateY(0);
 	opacity: 0.5;
+
+	pointer-events: all;
 }
 
 .explorer.hidden {

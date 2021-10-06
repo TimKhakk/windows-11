@@ -2,7 +2,7 @@ import './AppLayout.css';
 import { useAppContext } from '../../Context/AppContext';
 
 function AppLayout({ app, children }) {
-	const { runningApps, closeApp, hideApp, focusApp } = useAppContext();
+	const { closeApp, hideApp, focusApp } = useAppContext();
 
 	// const app = runningApps?.find(app => app.id === id);
 
